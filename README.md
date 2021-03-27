@@ -83,7 +83,9 @@ We have installed the following Beats on these machines:
 - Filebeat
 
 These Beats allow us to collect the following information from each machine:
--filebeat - filebeat is used to detect changes to the filesystem on the webservers
+
+-filebeat - is used to detect changes to the filesystem on the webservers
+
 -Metricbeat - is used to detect changes in system metrics on the webservers.  This collects cpu/ram statistics, failed remote logins, and failed priviledge escalations.
 
 ### Using the Playbook
