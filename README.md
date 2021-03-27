@@ -92,7 +92,8 @@ These Beats allow us to collect the following information from each machine:
 
 
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
-**ansible-playbook -v playbookname.yml  -use this command to run your playbook files  *note* - you need to be in the directory they are located in to run them!!!**
+
+**ansible-playbook -v playbookname.yml  -use this command to run your playbook files  *note - you need to be in the directory they are located in to run them!!!**
 
 SSH into the control node *ansible container from jump box* and follow the steps below:
 
@@ -132,4 +133,5 @@ After running your playbooks, you can check them by running a command:   curl ht
 
 
 Kibana Website
+
 http://<ELK_VM_PUBLIC.IP>:5601/app/kibana
