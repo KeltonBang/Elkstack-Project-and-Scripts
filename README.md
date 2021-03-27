@@ -21,11 +21,17 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly dependable (available), in addition to restricting inbound traffic to the network.
---Load Balancers protect the availability of the information on the webservers and prevent them from being overloaded with traffic. The Load balancer does this by distributing the traffic  between the webservers.The advantage of a jump box is the secure access from one allowed IP address, preventing others from accessing our network.
+-Load balancing ensures that the application will be highly dependable (available), in addition to restricting inbound traffic to the network.
+
+
+-Load Balancers protect the availability of the information on the webservers and prevent them from being overloaded with traffic. The Load balancer does this by distributing the traffic  between the webservers.
+
+-The advantage of a jump box is the secure access from one allowed IP address, preventing others from accessing our network.
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems and system metrics.
+
 --Filebeat monitors the log files and locations specifified on our webservers and outputs the data to our kibana gui.
+
 --Metricbeat periodically collect system metrics from the webservers as well as application metrics, takes the metrics and statistics that it collects and ships them to the output that you specify.
 
 The configuration details of each machine may be found below.
