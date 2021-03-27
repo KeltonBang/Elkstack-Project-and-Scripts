@@ -32,12 +32,12 @@ The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address (private)| Operating System |
-|----------|----------|------------|------------------|
+|----------|---------|------------|---------------|
 | Jump Box | Gateway |  10.0.0.4   |   Linux       |
-| Web-1    |Webserver|  10.0.0.5   |  Linux        |
-| Web-2    |Webserver|  10.0.0.6   |  Linux        |
-| Web-3    |Webserver|  10.0.0.7   |  Linux        |
-|Elk       |Elk Stack|  10.1.0.4   |  Linux        |
+| Web-1    |Webserver|  10.0.0.5   |   Linux       |
+| Web-2    |Webserver|  10.0.0.6   |   Linux       |
+| Web-3    |Webserver|  10.0.0.7   |   Linux       |
+|  Elk     |Elk Stack|  10.1.0.4   |   Linux       |
 
 ### Access Policies
 
@@ -53,9 +53,8 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes                 |     67.64.30.98      |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box |         Yes         |     67.64.30.98      |
+
 
 ### Elk Configuration
 
@@ -76,13 +75,13 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _DVWA-1 = 10.0.0.5
-- _DVWA-2 = 10.0.0.6
-- _DVWA-3 = 10.0.0.7
+- DVWA-1 = 10.0.0.5
+- DVWA-2 = 10.0.0.6
+- DVWA-3 = 10.0.0.7
 
 We have installed the following Beats on these machines:
-- _Metricbeat
-- _Filebeat
+- Metricbeat
+- Filebeat
 
 These Beats allow us to collect the following information from each machine:
 -filebeat - filebeat is used to detect changes to the filesystem on the webservers
@@ -90,22 +89,34 @@ These Beats allow us to collect the following information from each machine:
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+***ansible-playbook -v playbookname.yml**  -use this command to run your playbook files  *note* - you need to be in the directory they are located in to run them!!!
 
 SSH into the control node *ansible container from jump box* and follow the steps below:
-- Copy the ___playbook__ file to __the Ansible Control node ___. This should be placed in /ect/ansible/files.  Use git clone *repositoryurl* to acquire the playbooks
-- Update the __config.yml, playbook.yml, and ansible hosts___ files to include...
--   your DVWA private ips, and your elk vm private ips.
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? 
-- 
-- Where do you copy it?_
-- 
-- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- 
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- Copy the ___playbook__ files to __the Ansible Control node ___. This should be placed in /ect/ansible/roles.  Use git clone https://github.com/KeltonBang/FirstElkStack.git to acquire the repository and Infrastructure code
+
+- Update the __config.yml, playbook.yml, and hosts___ files to include...
+-   your DVWA private ips, and your elk vm private ips.
+
+---Move your config.yml files to /etc/ansible/files  *use mv command** *note* - you may need to create this directory first using: mkdir /etc/ansible/files
+
+- Run the playbooks.yml using :ansible-playbook *filename*.yml 
+
+- The Ansible-Playbook files are:
+- install-metricbeat.yml
+- install-filebeat.yml
+- install-elk.yml
+
+-  You should copy the ansible playbooks into
+- /etc/ansible/roles    *if you don't have this directory yet, use mkdir /etc/ansible/roles to create it*
+**Use mv command to both copy and move the files**
+- Which file do you update to make Ansible run the playbook on a specific machine? 
+--- Edit the host name at the top of the playbook to tell ansible to run the playbook from the specified host either under webservers or elkservers in the hosts file
+
+- How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+---In your hosts file you should have webservers private ip listed and a elkserver private ip listed.  Your playbook file will use the hosts file to determine which ip to install on. This is directed by typing webservers or elkserver in the hosts:  location in the playbook.yml. 
+
+After running your playbooks, you can check them by running a command:   curl http://10.1.0.4:5601  ---this should print html to your terminal if everything is correct and running.
+-Go to the kibana website to utilize the gui and sort through the data.
 Kibana Website
 http://<ELK_VM_PUBLIC.IP>:5601/app/kibana
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
