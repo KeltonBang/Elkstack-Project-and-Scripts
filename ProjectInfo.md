@@ -53,46 +53,59 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
+| Jump Box | Yes                 |     67.64.30.98      |
 |          |                     |                      |
 |          |                     |                      |
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+- Automating configuration of the elk machine is advantageous due to anyone being able to run your configuration settings and setup their own elk stack quickly. Automation makes it easier to rapidly deploy desired configurations in the future as many times as needed.
 
 The playbook implements the following tasks:
-- run all following commands as sudoTODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
+
+- run all following commands as sudo 
 - install docker
 - install python3-pip
 - install docker python module
-- 
+- use more memory
+- download and launch a docker container, and start it always on restart
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+-https://docs.google.com/document/d/1Zgxcj8v_aqrTJFOtR3diKj1oLKQPofYygW56s6pl5X8/edit?usp=sharing
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- _DVWA-1 = 10.0.0.5
+- _DVWA-2 = 10.0.0.6
+- _DVWA-3 = 10.0.0.7
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- _Metricbeat
+- _Filebeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+-filebeat - filebeat is used to detect changes to the filesystem on the webservers
+-Metricbeat - is used to detect changes in system metrics on the webservers.  This collects cpu/ram statistics, failed remote logins, and failed priviledge escalations.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
-SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
+SSH into the control node *ansible container from jump box* and follow the steps below:
+- Copy the ___playbook__ file to __the Ansible Control node ___. This should be placed in /ect/ansible/files.  Use git clone *repositoryurl* to acquire the playbooks
+- Update the __config.yml, playbook.yml, and ansible hosts___ files to include...
+-   your DVWA private ips, and your elk vm private ips.
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- _Which file is the playbook? 
+- 
+- Where do you copy it?_
+- 
+- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- 
 - _Which URL do you navigate to in order to check that the ELK server is running?
+Kibana Website
+http://<ELK_VM_PUBLIC.IP>:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
