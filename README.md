@@ -1,4 +1,4 @@
-This is a collection of my Linux scripts and my Ansible scripts i created when i attended the KU Cybersecurity Bootcamp
+This is a collection of my Linux scripts and my Ansible scripts i created
 
 The linux scripts were used to sort through the Lucky Duck Casino dealer and player data to find who was cheating at the roulette table. 
 
