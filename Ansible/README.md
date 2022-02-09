@@ -84,11 +84,11 @@ This ELK server is configured to monitor the following machines:
 - DVWA-2 = 10.0.0.6
 - DVWA-3 = 10.0.0.7
 
-We have installed the following Beats on these machines:
+I have installed the following Beats on these machines:
 - Metricbeat
 - Filebeat
 
-These Beats allow us to collect the following information from each machine:
+These Beats allow me to collect the following information from each machine:
 
 -filebeat - is used to detect changes to the filesystem on the webservers
 
